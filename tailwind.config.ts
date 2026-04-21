@@ -9,8 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        "eldnet-blue": "#003DA5", // Bleu principal des boutons/liens
+        "eldnet-dark": "#0a192f", // Fond sombre pour certaines sections
+        "eldnet-gray": "#f8fafc", // Gris très clair pour le fond
       },
     },
   },
