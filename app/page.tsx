@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import useScrollToTop from "@/hooks/use_scroll_to_top";
+import {
+  Building2,
+  CheckCircle,
+  Clock,
+  Lock,
+  Star,
+  Wrench,
+} from "lucide-react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,27 +22,27 @@ const poppins = Poppins({
 const services = [
   {
     title: "CONSEIL INFORMATIQUE",
-    desc: "Audit et Conseil Stratégique - Analyse experte pour aligner vos technologies.",
+    desc: "Audit et Conseil Stratégique - Analyse experte pour aligner vos technologies sur vos objectifs d'affaires et optimiser vos processus.",
   },
   {
     title: "SÉCURITÉ INFORMATIQUE",
-    desc: "Cybersécurité & Protection proactive contre les menaces.",
+    desc: "Cybersécurité & Protection proactive et réactive contre les menaces, gestion des vulnérabilités et conformité.",
   },
   {
     title: "GESTION DE RÉSEAU",
-    desc: "Infogérance & supervision temps réel.",
+    desc: "Infogérance & supervision : Supervision en temps réel, maitrise et optimisation de la performance du réseau.",
   },
   {
     title: "SUPPORT TECHNIQUE",
-    desc: "Assistance et expertise quotidienne.",
+    desc: "Assistance et Support : Assistance réactive et expertise technique pour accompagner vos équipes au quotidienne.",
   },
   {
-    title: "SUPPORT CRITIQUE",
-    desc: "Intervention 24/7 pour environnements sensibles.",
+    title: "SUPPORT TECHNIQUE CRITIQUE",
+    desc: "Assistance & Support Critique : Intervention 24/7 pour environnements sensibles. Réduction des risques et continuité d'activité.",
   },
   {
     title: "DÉVELOPPEMENT LOGICIEL",
-    desc: "Solutions sur mesure adaptées à vos besoins.",
+    desc: "Solutions Logicielles sur Mesure : Conception, développement et intégration des solutions adaptées à vos métiers.",
   },
 ];
 
@@ -180,20 +188,13 @@ export default function Home() {
       >
         <div>
           <h3 className="flex items-center gap-4 text-xl font-semibold mb-4">
-            <Image
-              src={"/images/about_0.png"}
-              alt="about_0"
-              width={50}
-              height={50}
-            />
+            <div className="w-100 h-100 rounded-full bg-blue-50 p-4">
+              <Building2 className="text-blue-500" size={40} />
+            </div>
             <span className="flex flex-col gap-1">
               <span>{"À PROPOS DE NOUS"}</span>
               <span className="w-[30%] h-0.5 bg-blue-600" />
             </span>
-            {/* <span className="relative">
-              {"À PROPOS DE NOUS"}
-              <span className="absolute left-0 -bottom-1 w-[30%] h-0.5 bg-blue-600" />
-            </span> */}
           </h3>
           <p className="text-sm text-gray-600 leading-relaxed">
             EldNet-Tech est un partenaire technologique stratégique spécialisé
@@ -212,38 +213,32 @@ export default function Home() {
             {
               title: "Expertise éprouvée",
               description: "Une équipe certifiée et experimentée.",
-              icon: "/images/about_1.png",
+              icon: <CheckCircle className="text-blue-500" size={40} />,
             },
             {
               title: "Accompagnement sur mesure",
               description:
                 "Des solutions adaptées à votre secteur et à vos objectifs.",
-              icon: "/images/about_2.png",
+              icon: <Wrench className="text-blue-500" size={40} />,
             },
             {
               title: "Sécurité renforcée",
               description: "Protection proactive de vos données et système.",
-              icon: "/images/about_3.png",
+              icon: <Lock className="text-blue-500" size={40} />,
             },
             {
               title: "Performance optimisée",
               description: "Amélioration continue de vos infrastructures.",
-              icon: "/images/about_4.png",
+              icon: <Star className="text-blue-500" size={40} />,
             },
           ].map((item) => (
             <motion.div
               key={item.title}
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-4 rounded-md shadow-sm text-sm flex gap-1"
+              className="bg-white p-4 rounded-md shadow-lg text-sm flex gap-4 items-center"
             >
-              <div>
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  width={50}
-                  height={50}
-                  className="w-full"
-                />
+              <div className="w-100 h-100 rounded-full bg-blue-50 p-4">
+                {item.icon}
               </div>
               <div>
                 <h4 className="font-semibold mt-2">{item.title}</h4>
@@ -259,19 +254,32 @@ export default function Home() {
         id="contact"
         className="bg-[#0B2A4A] text-white px-10 py-8 flex flex-col md:flex-row justify-between items-center"
       >
-        <p className="text-sm">Prêt à transformer votre infrastructure ?</p>
-        <button
+        <div className="flex flex-col gap-2">
+          <h3 className="text-xl font-semibold">
+            {"Prêt à transformer votre infrastructure ?"}
+          </h3>
+          <p className="text-sm">
+            {
+              "Échangeons dès aujourd'hui sur vos futurs projets technologiques."
+            }
+          </p>
+        </div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
           onClick={() => setOpen(true)}
           className="border border-white px-6 py-2 rounded-md text-sm mt-4 md:mt-0"
         >
           NOUS CONTACTER
-        </button>
+        </motion.button>{" "}
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="px-10 py-16">
+      <section id="services" className="px-10 py-8">
         <h3 className="text-center text-xl font-semibold mb-10">
-          NOS SERVICES
+          <span className="flex flex-col gap-1">
+            <span>{"NOS SERVICES"}</span>
+            <span className="w-[30px] h-0.5 bg-blue-600 self-center" />
+          </span>
         </h3>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -281,10 +289,62 @@ export default function Home() {
               whileHover={{ y: -6 }}
               className="bg-white rounded-md shadow-sm overflow-hidden"
             >
-              <div className="h-40 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475')] bg-cover bg-center" />
+              <div
+                className="h-40 bg-cover bg-center"
+                style={{ backgroundImage: `url(/images/service_${i + 1}.png)` }}
+              />
               <div className="p-4">
                 <h4 className="text-sm font-semibold mb-2">{s.title}</h4>
                 <p className="text-xs text-gray-600">{s.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="contact"
+        className="bg-[#0B2A4A]  px-10 py-8 flex flex-col justify-between items-center"
+      >
+        <div className="flex flex-col items-center gap-2 mb-8 text-white">
+          <h3 className="text-xl font-semibold">
+            {"Qu'es-qui nous caracterise ?"}
+          </h3>
+          <p className="text-sm">{"Nos leitmotivs."}</p>
+        </div>
+
+        <div className="flex gap-4 flex-wrap md:flex-nowrap justify-center">
+          {[
+            {
+              title: "Expertise certifiée",
+              description: "Des professionnels qualifiés et certifiés.",
+              icon: <CheckCircle className="text-blue-500" size={40} />,
+            },
+            {
+              title: "Disponibilité 24/7",
+              description: "Une équipe à votre écoute à tout moment.",
+              icon: <Clock className="text-blue-500" size={40} />,
+            },
+            {
+              title: "Solution sur mesure",
+              description: "Des services adaptés à vos besoins spécifiques.",
+              icon: <Wrench className="text-blue-500" size={40} />,
+            },
+            {
+              title: "Engagement qualité",
+              description: "AUn engagement fort pour votre satisfaction.",
+              icon: <Star className="text-blue-500" size={40} />,
+            },
+          ].map((item) => (
+            <motion.div
+              key={item.title}
+              whileHover={{ scale: 1.05 }}
+              className="bg-white p-4 rounded-md shadow-sm text-sm flex items-center gap-4"
+            >
+              <div>{item.icon}</div>
+              <div>
+                <h4 className="font-semibold mt-2">{item.title}</h4>
+                <p className="text-xs text-gray-600 mt-1">{item.description}</p>
               </div>
             </motion.div>
           ))}
