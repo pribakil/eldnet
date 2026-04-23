@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Poppins } from "next/font/google";
-import Image from "next/image";
 import useScrollToTop from "@/hooks/use_scroll_to_top";
 import {
   AppWindow,
   Building2,
   CheckCircle,
   Clock,
+  Globe,
   Lock,
   Mail,
   Network,
@@ -98,13 +98,7 @@ export default function Home() {
       {/* NAVBAR */}
       <header className="fixed top-0 left-0 right-0 z-50 flex flex-wrap justify-between items-center gap-3 bg-white shadow-xl px-4 py-4 sm:px-6">
         <div className="flex items-center gap-3">
-          <Image
-            src="/images/globe.png"
-            alt="Logo"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          <Globe className="text-[#01062D]" size={30} />
           <h1 className="font-bold text-lg">
             EldNet-<span className="text-blue-600">Tech</span>
           </h1>
@@ -140,7 +134,12 @@ export default function Home() {
 
         {/* MOBILE */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)}>☰</button>
+          <button
+            className="text-2xl text-[#01062D]"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
           {menuOpen && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -173,7 +172,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero_section"
-        className="grid md:grid-cols-2 items-center bg-[#0B2A4A] text-white py-16 px-4 mt-[4.5rem] sm:px-6 lg:px-10"
+        className="grid md:grid-cols-2 items-center bg-[#0B2A4A] text-white py-16 px-4 mt-[4.2rem] sm:px-6 lg:px-10"
       >
         <div>
           <h2 className="text-4xl font-semibold leading-tight mb-4">
