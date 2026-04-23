@@ -2,10 +2,11 @@
 const nextConfig = {
   output: "export", // enabling static export
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "**",
         pathname: "**",
       },
     ],

@@ -6,11 +6,16 @@ import { Poppins } from "next/font/google";
 import Image from "next/image";
 import useScrollToTop from "@/hooks/use_scroll_to_top";
 import {
+  AppWindow,
   Building2,
   CheckCircle,
   Clock,
   Lock,
+  Mail,
+  Network,
+  Phone,
   Star,
+  Users,
   Wrench,
 } from "lucide-react";
 
@@ -23,26 +28,32 @@ const services = [
   {
     title: "CONSEIL INFORMATIQUE",
     desc: "Audit et Conseil Stratégique - Analyse experte pour aligner vos technologies sur vos objectifs d'affaires et optimiser vos processus.",
+    icon: <Users className="text-white" size={20} />,
   },
   {
     title: "SÉCURITÉ INFORMATIQUE",
     desc: "Cybersécurité & Protection proactive et réactive contre les menaces, gestion des vulnérabilités et conformité.",
+    icon: <Lock className="text-white" size={20} />,
   },
   {
     title: "GESTION DE RÉSEAU",
     desc: "Infogérance & supervision : Supervision en temps réel, maitrise et optimisation de la performance du réseau.",
+    icon: <Network className="text-white" size={20} />,
   },
   {
     title: "SUPPORT TECHNIQUE",
     desc: "Assistance et Support : Assistance réactive et expertise technique pour accompagner vos équipes au quotidienne.",
+    icon: <Phone className="text-white" size={20} />,
   },
   {
     title: "SUPPORT TECHNIQUE CRITIQUE",
     desc: "Assistance & Support Critique : Intervention 24/7 pour environnements sensibles. Réduction des risques et continuité d'activité.",
+    icon: <Wrench className="text-white" size={20} />,
   },
   {
     title: "DÉVELOPPEMENT LOGICIEL",
     desc: "Solutions Logicielles sur Mesure : Conception, développement et intégration des solutions adaptées à vos métiers.",
+    icon: <AppWindow className="text-white" size={20} />,
   },
 ];
 
@@ -162,7 +173,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero_section"
-        className="grid md:grid-cols-2 items-center bg-[#0B2A4A] text-white py-8 px-4 mt-[4.5rem] sm:px-6 lg:px-10"
+        className="grid md:grid-cols-2 items-center bg-[#0B2A4A] text-white py-16 px-4 mt-[4.5rem] sm:px-6 lg:px-10"
       >
         <div>
           <h2 className="text-4xl font-semibold leading-tight mb-4">
@@ -289,14 +300,17 @@ export default function Home() {
             <motion.div
               key={i}
               whileHover={{ y: -6 }}
-              className="bg-white rounded-md shadow-sm overflow-hidden"
+              className="bg-white rounded-md shadow-lg overflow-hidden"
             >
               <div
                 className="h-40 bg-cover bg-center"
                 style={{ backgroundImage: `url(/images/service_${i + 1}.png)` }}
               />
-              <div className="p-4">
-                <h4 className="text-sm font-semibold mb-2">{s.title}</h4>
+              <div className="p-4 relative">
+                <span className="w-10 h-10 flex items-center justify-center p-2 bg-blue-500 rounded-full absolute -top-5 left-4 border-2 border-white">
+                  {s.icon}
+                </span>
+                <h4 className="text-sm font-semibold mb-2 mt-4">{s.title}</h4>
                 <p className="text-xs text-gray-600">{s.desc}</p>
               </div>
             </motion.div>
@@ -361,23 +375,42 @@ export default function Home() {
             animate={{ scale: 1, opacity: 1 }}
             className="bg-white p-6 rounded-md w-[90%] md:w-[400px]"
           >
-            <h3 className="font-semibold mb-4">Contact</h3>
-            <input
-              className="w-full border p-2 mb-3 text-sm"
-              placeholder="Nom"
-            />
-            <input
-              className="w-full border p-2 mb-3 text-sm"
-              placeholder="Email"
-            />
-            <textarea
-              className="w-full border p-2 mb-3 text-sm"
-              placeholder="Message"
-            />
-            <div className="flex justify-end gap-2 text-sm">
-              <button onClick={() => setOpen(false)}>Annuler</button>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-md">
-                Envoyer
+            <div className="flex flex-col items-center">
+              <h3 className="text-center text-xl font-semibold">
+                {"NOUS CONTACTER"}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {"Cliquez pour nous contacter"}
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 p-4 sm:p-6 lg:p-10 border border-gray-200 rounded-md my-6 shadow-lg">
+              <p className="flex gap-2">
+                <Phone className="text-blue-500" size={20} />
+                <a
+                  href="tel:+243860400145"
+                  className="text-md font-semibold hover:underline"
+                >
+                  +243 86 04 00 145
+                </a>
+              </p>
+              <p className="flex gap-2">
+                <Mail className="text-blue-500" size={20} />
+                <a
+                  href="mailto:contact@eldnet.tech"
+                  className="text-md font-semibold hover:underline"
+                >
+                  contact@eldnet.tech
+                </a>
+              </p>
+            </div>
+
+            <div className="flex justify-end">
+              <button
+                className="border border-gray-200 py-2 px-6 rounded-md text-sm hover:bg-gray-100 transition-colors duration-200"
+                onClick={() => setOpen(false)}
+              >
+                Fermer
               </button>
             </div>
           </motion.div>
