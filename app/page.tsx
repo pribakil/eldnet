@@ -81,10 +81,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={`${poppins.className} text-gray-800`}>
+    <main
+      className={`${poppins.className} text-gray-800 w-full overflow-x-hidden`}
+    >
       {/* NAVBAR */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-white shadow-xl">
-        <div className="flex items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 flex flex-wrap justify-between items-center gap-3 bg-white shadow-xl px-4 py-4 sm:px-6">
+        <div className="flex items-center gap-3">
           <Image
             src="/images/globe.png"
             alt="Logo"
@@ -97,7 +99,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="flex gap-8 items-center">
+        <div className="flex flex-wrap gap-4 items-center">
           <nav className="hidden md:flex gap-8 text-sm font-medium">
             {[
               { label: "Accueil", link: "home" },
@@ -160,7 +162,7 @@ export default function Home() {
       {/* HERO */}
       <section
         id="hero_section"
-        className="grid md:grid-cols-2 items-center bg-[#0B2A4A] text-white px-10 py-16 mt-[4.5rem]"
+        className="grid md:grid-cols-2 items-center bg-[#0B2A4A] text-white py-8 px-4 mt-[4.5rem] sm:px-6 lg:px-10"
       >
         <div>
           <h2 className="text-4xl font-semibold leading-tight mb-4">
@@ -184,16 +186,16 @@ export default function Home() {
       {/* ABOUT */}
       <section
         id="about"
-        className="px-10 py-16 grid md:grid-cols-2 gap-10 bg-gray-50"
+        className="px-4 grid gap-10 bg-gray-50 py-8 sm:px-6 lg:px-10 md:grid-cols-2"
       >
         <div>
-          <h3 className="flex items-center gap-4 text-xl font-semibold mb-4">
-            <div className="w-100 h-100 rounded-full bg-blue-50 p-4">
+          <h3 className="gap-4 text-xl font-semibold mb-4 flex items-center">
+            <div className="w-16 h-16 rounded-full bg-blue-50 p-4 flex items-center justify-center">
               <Building2 className="text-blue-500" size={40} />
             </div>
             <span className="flex flex-col gap-1">
               <span>{"À PROPOS DE NOUS"}</span>
-              <span className="w-[30%] h-0.5 bg-blue-600" />
+              <span className="w-[32px] h-0.5 bg-blue-600" />
             </span>
           </h3>
           <p className="text-sm text-gray-600 leading-relaxed">
@@ -208,7 +210,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
           {[
             {
               title: "Expertise éprouvée",
@@ -235,9 +237,9 @@ export default function Home() {
             <motion.div
               key={item.title}
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-4 rounded-md shadow-lg text-sm flex gap-4 items-center"
+              className="bg-white p-4 rounded-md shadow-lg text-sm flex flex-col gap-4 sm:flex-row sm:items-center"
             >
-              <div className="w-100 h-100 rounded-full bg-blue-50 p-4">
+              <div className="w-16 h-16 rounded-full bg-blue-50 p-4 flex items-center justify-center">
                 {item.icon}
               </div>
               <div>
@@ -252,7 +254,7 @@ export default function Home() {
       {/* CTA BAR */}
       <section
         id="contact"
-        className="bg-[#0B2A4A] text-white px-10 py-8 flex flex-col md:flex-row justify-between items-center"
+        className="bg-[#0B2A4A] text-white px-4 flex flex-col gap-4 justify-between items-center py-8 sm:px-6 lg:px-10 md:flex-row"
       >
         <div className="flex flex-col gap-2">
           <h3 className="text-xl font-semibold">
@@ -274,15 +276,15 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="px-10 py-8">
+      <section id="services" className="py-8 px-4 sm:px-6 lg:px-10">
         <h3 className="text-center text-xl font-semibold mb-10">
           <span className="flex flex-col gap-1">
             <span>{"NOS SERVICES"}</span>
-            <span className="w-[30px] h-0.5 bg-blue-600 self-center" />
+            <span className="w-[32px] h-0.5 bg-blue-600 self-center" />
           </span>
         </h3>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
           {services.map((s, i) => (
             <motion.div
               key={i}
@@ -303,8 +305,8 @@ export default function Home() {
       </section>
 
       <section
-        id="contact"
-        className="bg-[#0B2A4A]  px-10 py-8 flex flex-col justify-between items-center"
+        id="values"
+        className="bg-[#0B2A4A] px-4 flex flex-col justify-between items-center py-8 sm:px-6 lg:px-10"
       >
         <div className="flex flex-col items-center gap-2 mb-8 text-white">
           <h3 className="text-xl font-semibold">
@@ -313,7 +315,7 @@ export default function Home() {
           <p className="text-sm">{"Nos leitmotivs."}</p>
         </div>
 
-        <div className="flex gap-4 flex-wrap md:flex-nowrap justify-center">
+        <div className="grid w-full gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               title: "Expertise certifiée",
@@ -339,7 +341,7 @@ export default function Home() {
             <motion.div
               key={item.title}
               whileHover={{ scale: 1.05 }}
-              className="bg-white p-4 rounded-md shadow-sm text-sm flex items-center gap-4"
+              className="bg-white p-4 rounded-md shadow-sm text-sm flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <div>{item.icon}</div>
               <div>
@@ -383,7 +385,7 @@ export default function Home() {
       )}
 
       {/* FOOTER */}
-      <footer className="text-center text-xs text-gray-500 py-6 bg-gray-100">
+      <footer className="text-center text-xs text-gray-500 bg-gray-100 py-8">
         © 2026 EldNet-Tech
       </footer>
     </main>
